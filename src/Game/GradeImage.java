@@ -15,8 +15,8 @@ public class GradeImage {
     private static BufferedImage D;
     private static BufferedImage E;
     private static BufferedImage F;
-    private static BufferedImage zv1;
-    private static BufferedImage zv2;
+    private static BufferedImage StarOff;
+    private static BufferedImage StarIn;
     private static float grade_left = 200;
     private static float grade_top = -100;
     private static float grade_top1 = -100;
@@ -31,8 +31,8 @@ public class GradeImage {
         D = ImageIO.read(new File("src/Resources/D.png"));
         E = ImageIO.read(new File("src/Resources/E.png"));
         F = ImageIO.read(new File("src/Resources/F.png"));
-        zv1 = ImageIO.read(new File("src/Resources/zv1.jpg"));
-        zv2 = ImageIO.read(new File("src/Resources/zv2.jpg"));
+        StarOff = ImageIO.read(new File("src/Resources/zv1.jpg"));
+        StarIn = ImageIO.read(new File("src/Resources/zv2.jpg"));
         game_over = ImageIO.read(new File("src/Resources/dopka.png"));
     }
 
@@ -68,12 +68,12 @@ public class GradeImage {
         return F;
     }
 
-    public static BufferedImage getZv1() {
-        return zv1;
+    public static BufferedImage getStarOff() {
+        return StarOff;
     }
 
-    public static BufferedImage getZv2() {
-        return zv2;
+    public static BufferedImage getStarIn() {
+        return StarIn;
     }
 
     public static float getGrade_left() {

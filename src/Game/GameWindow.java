@@ -8,9 +8,9 @@ import java.io.IOException;
 
 public class GameWindow extends JFrame {
     private static GameWindow game_window;
-    private static int i = 0;
-    private static int j = 0;
-    private static int w = 0;
+    private static int PositionGradeF = 0;
+    private static int BurningOfTheStar = 0;
+    private static int DidNotCatchAfterStarOff = 0;
     private static long last_frame_time;
     private static int score;
     private static int rand = 1;
@@ -73,11 +73,11 @@ public class GameWindow extends JFrame {
         GradeImage.setGrade_top1(GradeImage.getGrade_top1() + GradeImage.getGrade_v() * delta);
 
         g.drawImage (GradeImage.getBackground(),0,0,null);
-        g.drawImage (GradeImage.getZv1(), 0, 0, null);
+        g.drawImage (GradeImage.getStarOff(), 0, 0, null);
 
         if (dopka == 2) {
-            i = i + 1;
-            if (i == 2) {
+            PositionGradeF = PositionGradeF + 1;
+            if (PositionGradeF == 2) {
                 Music.run();
             }
             g.drawImage (GradeImage.getGame_over(),170,50,null);
@@ -86,13 +86,13 @@ public class GameWindow extends JFrame {
 
         gradesPosition(g);
 
-        if (GradeImage.getGrade_v() >= 40 && i != 2 && j != 1) g.drawImage (GradeImage.getZv2(), 0, 0, null);
-        if (GradeImage.getGrade_v() >= 40 && i != 2 && j == 1) g.drawImage (GradeImage.getZv1(), 0, 0, null);
+        if (GradeImage.getGrade_v() >= 40 && PositionGradeF != 2 && BurningOfTheStar != 1) g.drawImage (GradeImage.getStarIn(), 0, 0, null);
+        if (GradeImage.getGrade_v() >= 40 && PositionGradeF != 2 && BurningOfTheStar == 1) g.drawImage (GradeImage.getStarOff(), 0, 0, null);
         if (GradeImage.getGrade_top1() > game_window.getHeight() && rand == 5 ) {
              firstPosition();
          } else if (GradeImage.getGrade_top() > game_window.getHeight() ){
-             i = i + 1;
-             if (i == 2 && GradeImage.getGrade_v() >= 10+30 && j == 0) {
+             PositionGradeF = PositionGradeF + 1;
+             if (PositionGradeF == 2 && GradeImage.getGrade_v() >= 10+30 && BurningOfTheStar == 0) {
                  GradeImage.setGrade_top(-100);
                  GradeImage.setGrade_top1(-100);
                  GradeImage.setGrade_left((int) (Math.random() * (game_field.getWidth() - GradeImage.getA().getWidth(null))));
@@ -100,15 +100,13 @@ public class GameWindow extends JFrame {
                  score++;
                  rand = (int) (Math.random()*6);
                  game_window.setTitle("Score: " + score);
-                 j++;
-                 g.drawImage (GradeImage.getZv1(), 0, 0, null);
+                 BurningOfTheStar++;
+                 g.drawImage (GradeImage.getStarOff(), 0, 0, null);
              }
              else {
+                 DidNotCatchAfterStarOff = DidNotCatchAfterStarOff + 1;
                  g.drawImage(GradeImage.getGame_over(), 170, 50, null);
-                 w = w + 1;
-                 g.drawImage(GradeImage.getGame_over(), 170, 50, null);
-                 if (w == 3) {
-                     g.drawImage(GradeImage.getGame_over(), 170, 50, null);
+                 if (DidNotCatchAfterStarOff == 3) {
                      Music.run();
                  }
              }
