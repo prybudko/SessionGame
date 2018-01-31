@@ -1,4 +1,4 @@
-package com.company;
+package Game;
 
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
  */
 public class Music {
 
-        public static void run(Graphics graphics){
+        public static void run(){
             try {
                 FileInputStream f = new FileInputStream("sound.mp3");
                 try {
